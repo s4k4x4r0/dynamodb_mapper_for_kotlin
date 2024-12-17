@@ -1,9 +1,12 @@
-version: "3.8"
-
 services:
   app:
     build: .
     volumes:
       - .:/app
-    command: tail -f /dev/null # コンテナを起動したままにする
+    command: >
+      sh -c "
+        gradle wrapper &&
+        chmod +x gradlew &&
+        tail -f /dev/null
+      "
     working_dir: /app
