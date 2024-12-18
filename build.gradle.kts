@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.1.0"
+    kotlin("jvm") version "2.0.21"
     application
 
     // DynamoDB Mapper
@@ -20,6 +20,9 @@ dependencies {
     implementation("aws.sdk.kotlin:dynamodb-mapper:${awsSdkVersion}-beta")
     implementation("aws.sdk.kotlin:dynamodb-mapper-annotations:${awsSdkVersion}-beta")
 
+    implementation("org.slf4j:slf4j-api:2.0.16")
+    implementation("org.slf4j:slf4j-simple:2.0.16")
+
     testImplementation(kotlin("test"))
 }
 
@@ -30,7 +33,6 @@ tasks.test {
 kotlin {
     jvmToolchain{
         languageVersion.set(JavaLanguageVersion.of(21))
-        vendor.set(JvmVendorSpec.AMAZON)
     }
 }
 

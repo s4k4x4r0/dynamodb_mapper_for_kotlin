@@ -11,8 +11,6 @@ services:
       - AWS_DEFAULT_REGION
     command: >
       sh -c "
-        gradle wrapper &&
-        chmod +x gradlew &&
         tail -f /dev/null
       "
     working_dir: /app

@@ -1,0 +1,19 @@
+{
+    "name": "Kotlin DynamoDB Mapper Development",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "fwcd.kotlin",
+                "mathiasfrohlich.kotlin",
+                "vscjava.vscode-gradle",
+                "esbenp.prettier-vscode",
+                "shd101wyy.markdown-preview-enhanced",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    },
+    "remoteUser": "root"
+} 
