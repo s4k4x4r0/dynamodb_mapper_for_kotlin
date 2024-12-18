@@ -2,15 +2,20 @@
 
 このプロジェクトは、Docker 環境で実行できる Kotlin/JVM のサンプルプロジェクトです。
 
-## 環境
+## 必要な環境
 
-- Kotlin: 2.0.21
-- Java: 21
 - Docker
 - Docker Compose
 - VSCode + DevContainer
 
+GitHub Codespaces からの実行も可能です。
+
 ## 開発環境のセットアップ
+
+### GitHub Codespaces を使用する場合（推奨）
+
+   - GitHubのリポジトリページにアクセス
+   - 「Code」からCodespacesを起動する
 
 ### VSCode + DevContainer を使用する場合（推奨）
 
@@ -28,51 +33,50 @@
 
 ### 従来の Docker Compose を使用する場合
 
-1. プロジェクトのクローン:
+1. Docker コンテナの起動:
 
-```bash
-git clone <repository-url>
-cd <project-directory>
-```
+   ```bash
+   docker-compose up -d --build
+   ```
 
-2. Docker コンテナの起動:
+2. コンテナにログイン:
 
-```bash
-docker-compose up -d --build
-```
+   ```bash
+   docker-compose exec app bash
+   ```
 
-3. コンテナにログイン:
+3. コンテナ内で任意の操作が可能
 
-```bash
-docker-compose exec app bash
-```
+4. コンテナからログアウト:
 
-4. アプリケーションを実行:
+   ```bash
+   exit
+   ```
 
-```bash
-./gradlew run
-```
+5. コンテナの停止:
 
-5. コンテナからログアウト:
+   ```bash
+   docker-compose down
+   ```
 
-```bash
-exit
-```
+## コンテナ内でアプリを実行する方法
 
-6. コンテナの停止
+1. AWS 認証情報を設定:
 
-```bash
-docker-compose down
-```
+   ```bash
+   aws configure
+   ```
 
-## AWS 認証情報の設定
+   このコマンドを実行する代わりに、ホスト側で次の環境変数を設定した状態で、コンテナを作成してもよいです。（環境変数が自動で引き継がれます）
+   
+   - `AWS_ACCESS_KEY_ID`
+   - `AWS_SECRET_ACCESS_KEY`
+   - `AWS_SESSION_TOKEN`
+   - `AWS_REGION`
+   - `AWS_DEFAULT_REGION`
 
-このプロジェクトは、環境変数を使用して AWS 認証情報を管理します。コンテナの作成時に、環境変数が自動的に Docker コンテナに渡されます。
+2. アプリケーションをビルドして実行:
 
-**AWS 認証情報の設定手順:**
-
-1. AWS 認証情報を設定します。AWS ドキュメントを参照してください。
-2. 環境変数 `AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`、`AWS_SESSION_TOKEN`、`AWS_REGION`、`AWS_DEFAULT_REGION` を設定します。
-3. コンテナを作成(`docker-compose up -d`)します。
-
-**注意:** コンテナのビルド前に、AWS 認証情報を設定する必要があります。認証情報が切れてしまった場合、上記の環境変数が設定されたホストのシェルで`docker-compose up -d`を実行すれば、コンテナが再作成されます。（ホストと同期しているディレクトリ以外の作業中のファイルは削除されます）
+   ```bash
+   ./gradlew run
+   ```
