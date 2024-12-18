@@ -1,6 +1,6 @@
-# Kotlin/JVM Sample Project
+# Kotlin DynamoDB Mapper サンプルプロジェクト
 
-このプロジェクトは、Docker 環境で実行できる Kotlin/JVM のサンプルプロジェクトです。
+このプロジェクトは、Docker 環境で実行できる Kotlin DynamoDB Mapper のサンプルプロジェクトです。
 
 ## 必要な環境
 
