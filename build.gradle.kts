@@ -3,7 +3,7 @@ plugins {
     application
 
     // DynamoDB Mapper
-    id("aws.sdk.kotlin.hll.dynamodbmapper.schema.generator") version "1.3.95-beta" // For the Developer Preview, use the beta version of the latest SDK.
+    id("aws.sdk.kotlin.hll.dynamodbmapper.schema.generator") version "1.3.98-beta" // For the Developer Preview, use the beta version of the latest SDK.
 }
 
 group = "com.example"
@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-val awsSdkVersion: String = "1.3.95"
+val awsSdkVersion: String = "1.3.98"
 
 dependencies {
     // DynamoDB Mapper
@@ -26,16 +26,16 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
 kotlin {
-    jvmToolchain{
-        languageVersion.set(JavaLanguageVersion.of(21))
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 application {
-    mainClass.set("MainKt")
-} 
+    mainClass = "${group}.MainKt"
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
